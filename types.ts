@@ -1,9 +1,7 @@
 export enum ProcessStatus {
     PENDING = 'در انتظار',
     GENERATING = 'در حال تولید متن',
-    GENERATED = 'تولید شد',
-    WRITING = 'در حال ذخیره در شیت',
-    SAVED = 'ذخیره شد',
+    COMPLETED = 'انجام شد',
     ERROR = 'خطا'
 }
 

@@ -2,11 +2,14 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-export async function generateSalesText(prompt: string): Promise<string> {
+export async function generateSalesText(prompt: string, systemInstruction?: string): Promise<string> {
     try {
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: prompt,
+            config: {
+                ...(systemInstruction && { systemInstruction }),
+            }
         });
 
         const text = response.text;

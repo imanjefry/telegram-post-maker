@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ProcessedRow } from '../types';
 import { ProcessStatus } from '../types';
-import { CheckCircleIcon, XCircleIcon, ClockIcon, SparklesIcon, CloudUploadIcon } from './icons';
+import { CheckCircleIcon, XCircleIcon, ClockIcon, SparklesIcon } from './icons';
 
 interface ResultsTableProps {
     rows: ProcessedRow[];
@@ -10,9 +10,7 @@ interface ResultsTableProps {
 const statusIndicator: Record<ProcessStatus, { icon: React.ReactElement; color: string; }> = {
     [ProcessStatus.PENDING]: { icon: <ClockIcon />, color: 'text-gray-400' },
     [ProcessStatus.GENERATING]: { icon: <SparklesIcon />, color: 'text-yellow-400' },
-    [ProcessStatus.GENERATED]: { icon: <CheckCircleIcon />, color: 'text-cyan-400' },
-    [ProcessStatus.WRITING]: { icon: <CloudUploadIcon />, color: 'text-blue-400' },
-    [ProcessStatus.SAVED]: { icon: <CheckCircleIcon />, color: 'text-green-400' },
+    [ProcessStatus.COMPLETED]: { icon: <CheckCircleIcon />, color: 'text-green-400' },
     [ProcessStatus.ERROR]: { icon: <XCircleIcon />, color: 'text-red-400' },
 };
 
@@ -34,8 +32,8 @@ export const ResultsTable: React.FC<ResultsTableProps> = ({ rows }) => {
                             <tr key={row.id}>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-300">{index + 1}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{row.data.join(', ')}</td>
-                                <td className="px-6 py-4 text-sm text-gray-200 max-w-sm">
-                                    <p className="truncate" title={row.generatedText}>{row.generatedText || '-'}</p>
+                                <td className="px-6 py-4 text-sm text-gray-200" style={{minWidth: '250px'}}>
+                                    <p className="whitespace-pre-wrap" title={row.generatedText}>{row.generatedText || '-'}</p>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm">
                                     <div className={`flex items-center gap-2 ${statusIndicator[row.status].color}`}>

@@ -1,5 +1,5 @@
 {
-  "name": "AI Google Sheet Content Generator",
-  "description": "An AI automation tool that reads data from a Google Sheet, generates marketing content for each row using Gemini, and writes the results back into a new column in the same sheet.",
+  "name": "AI Telegram Marketing Post Generator",
+  "description": "An AI automation tool that reads data from Google Sheets, generates marketing content for each row using Gemini, and posts it to a specified Telegram channel.",
   "requestFramePermissions": []
 }
