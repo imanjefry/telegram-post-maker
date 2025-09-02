@@ -1,9 +1,4 @@
-
 import { GoogleGenAI } from "@google/genai";
-
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
@@ -21,6 +16,10 @@ export async function generateSalesText(prompt: string): Promise<string> {
         return text;
     } catch (error) {
         console.error('Error generating text with Gemini:', error);
+        // Check for specific authentication error from the API call
+        if (error instanceof Error && error.message.includes('API key not valid')) {
+             throw new Error('کلید API هوش مصنوعی نامعتبر است. لطفاً آن را بررسی کنید.');
+        }
         throw new Error('خطا در ارتباط با سرویس هوش مصنوعی.');
     }
 }

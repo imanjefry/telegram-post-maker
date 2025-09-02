@@ -1,18 +1,18 @@
 import React from 'react';
 import type { ProcessedRow } from '../types';
 import { ProcessStatus } from '../types';
-import { CheckCircleIcon, XCircleIcon, ClockIcon, PaperAirplaneIcon, SparklesIcon } from './icons';
+import { CheckCircleIcon, XCircleIcon, ClockIcon, SparklesIcon, CloudUploadIcon } from './icons';
 
 interface ResultsTableProps {
     rows: ProcessedRow[];
 }
 
-// Fix: Use React.ReactElement instead of JSX.Element to avoid namespace errors.
 const statusIndicator: Record<ProcessStatus, { icon: React.ReactElement; color: string; }> = {
     [ProcessStatus.PENDING]: { icon: <ClockIcon />, color: 'text-gray-400' },
     [ProcessStatus.GENERATING]: { icon: <SparklesIcon />, color: 'text-yellow-400' },
-    [ProcessStatus.POSTING]: { icon: <PaperAirplaneIcon />, color: 'text-blue-400' },
-    [ProcessStatus.COMPLETED]: { icon: <CheckCircleIcon />, color: 'text-green-400' },
+    [ProcessStatus.GENERATED]: { icon: <CheckCircleIcon />, color: 'text-cyan-400' },
+    [ProcessStatus.WRITING]: { icon: <CloudUploadIcon />, color: 'text-blue-400' },
+    [ProcessStatus.SAVED]: { icon: <CheckCircleIcon />, color: 'text-green-400' },
     [ProcessStatus.ERROR]: { icon: <XCircleIcon />, color: 'text-red-400' },
 };
 

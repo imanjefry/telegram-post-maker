@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
                     <span className="text-cyan-400">هوش مصنوعی</span>
                 </h1>
                 <p className="text-center text-gray-400 mt-2">
-                    ایجاد و ارسال پست‌های فروش تلگرام، مستقیماً از گوگل شیت
+                    تولید متن‌های فروش حرفه‌ای، مستقیماً از داده‌های گوگل شیت
                 </p>
             </div>
         </header>
