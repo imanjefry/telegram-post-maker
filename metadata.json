@@ -1,0 +1,5 @@
+{
+  "name": "AI Telegram Marketing Post Generator",
+  "description": "An AI automation tool that reads data from Google Sheets, generates marketing content for each row using Gemini, and posts it to a specified Telegram channel.",
+  "requestFramePermissions": []
+}
